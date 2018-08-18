@@ -22,7 +22,7 @@ const conf ={
             {
                 test: /\.js$/,
                 loader:'babel-loader',
-                //exclude:'/node-modules/'
+                exclude:'/node-modules/'
             }
         ]
     },
@@ -33,8 +33,11 @@ const conf ={
         overlay:true,
 	historyApiFallback: true,
         contentBase: './',
-    },
-    devtool:"eval-sourcemap"
+    }
 };
-module.exports = conf;
+module.exports = (env,options)=>{
+    let production = options.mode==='production';
+    conf.devtool = production?false:'eval';
+    return conf
+};
 
