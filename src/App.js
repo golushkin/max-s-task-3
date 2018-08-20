@@ -1,13 +1,20 @@
 import React from 'react';
 import './App.css';
+import {connect} from 'react-redux';
 
-export default class App extends React.Component{
-    constructor(props){
-        super(props);
-
-    }
+class App extends React.Component{
     render(){
-
+        return(
+            <div className={'wrapper'}>Hello world</div>
+        )
     }
 }
 
+export default connect(
+    state => ({
+
+    }),
+    dispatch => ({
+
+    })
+)(App)
