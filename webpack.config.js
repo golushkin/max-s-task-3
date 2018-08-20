@@ -31,7 +31,7 @@ const conf ={
     ],
     devServer:{
         overlay:true,
-	historyApiFallback: true,
+	    historyApiFallback: true,
         contentBase: './',
     }
 };

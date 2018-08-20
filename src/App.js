@@ -1,12 +1,13 @@
 import React from 'react';
+import './App.css';
 
 export default class App extends React.Component{
+    constructor(props){
+        super(props);
+
+    }
     render(){
-        return (
-            <div className='wrapper'>
-                <h1>hi</h1>
-            </div>
-        )
+
     }
 }
 
