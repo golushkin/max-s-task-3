@@ -5,7 +5,9 @@ import {connect} from 'react-redux';
 class App extends React.Component{
     render(){
         return(
-            <div className={'wrapper'}>Hello world</div>
+            <div className={'wrapper'}>
+                Hello world
+            </div>
         )
     }
 }
