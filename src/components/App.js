@@ -12,11 +12,17 @@ class App extends React.Component{
     }
 }
 
-export default connect(
-    state => ({
+const mapStateToProps = store => {
+    return{
 
-    }),
-    dispatch => ({
+    }
+};
 
-    })
-)(App)
+const mapDispatchToProps = dispatch =>{
+    return{
+
+    }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(App)
