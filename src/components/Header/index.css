@@ -1,0 +1,13 @@
+header{
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  @media screen and (max-width: 651px) {
+    &{
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+  }
+}

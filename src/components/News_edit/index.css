@@ -1,0 +1,47 @@
+.main.news-edit{
+  & article{
+    width: 80%;
+    margin: 50px auto;
+    box-sizing: content-box;
+    & input{
+      width: calc(99.9% - 10px);
+      padding-left: 10px;
+      outline: none;
+      border: 1px solid silver;
+      border-radius: 5px;
+      height: 28px;
+    }
+    & .text{
+      margin-top: 15px;
+      & textarea{
+        width: calc(99.9% - 20px);
+        resize: vertical;
+        outline: none;
+        border: 1px solid silver;
+        border-radius: 5px;
+        height: 280px;
+        padding: 10px;
+        line-height: 21px;
+        &::-webkit-scrollbar{
+          width: 4px;
+        }
+        &::-webkit-scrollbar-track {
+          background: #f4f4f4;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #b1b1b1;
+          border-radius: 2px;
+        }
+      }
+    }
+    & .buttons{
+      & .btn{
+        margin: 20px 10px;
+        &:first-child{
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+

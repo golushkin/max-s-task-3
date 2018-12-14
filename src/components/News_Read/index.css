@@ -1,0 +1,38 @@
+.main.news-read{
+  & article{
+    width: 80%;
+    margin: 50px auto;
+    & .title{
+      font-size: 17px;
+      display: flex;
+      justify-content: space-between;
+      & .edit{
+        display: flex;
+        & .fa-times{
+          font-size: 21px;
+        }
+        & i{
+          margin: 0 5px;
+        }
+      }
+    }
+    & .text{
+      line-height: 24px;
+      text-align: justify;
+    }
+    & .info{
+      margin: 10px 0;
+    }
+  }
+  & .buttons{
+    width: 80%;
+    margin: 50px auto;
+    & .btn{
+      margin: 20px 10px;
+      &:first-child{
+        margin-left: 0;
+      }
+    }
+  }
+}
+

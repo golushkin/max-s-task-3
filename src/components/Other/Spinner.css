@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+.spiner {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spiner_inner {
+  width: 300px;
+  text-align: center;
+}
+.spiner_inner .text {
+  font-family: 'Pacifico', cursive;
+  font-size: 36px;
+  color: #343434;
+  padding-bottom: 30px;
+  text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.48);
+  position: relative;
+}
+.spiner_inner .text span {
+  position: absolute;
+  bottom: 10px;
+  opacity: 0;
+  font-size: 60px;
+}
+.spiner_inner .text span:nth-child(1) {
+  right: 170px;
+  -webkit-animation: dot 1.2s infinite ease-in 1s;
+  animation: dot 1.2s infinite ease-in 1s;
+}
+.spiner_inner .text span:nth-child(2) {
+  right: 145px;
+  -webkit-animation: dot 1.2s infinite ease-in 2s;
+  animation: dot 1.2s infinite ease-in 2s;
+}
+.spiner_inner .text span:nth-child(3) {
+  right: 120px;
+  -webkit-animation: dot 1.2s infinite ease-in 3s;
+  animation: dot 1.2s infinite ease-in 3s;
+}
+
+@-webkit-keyframes dot {
+  0% {
+    bottom: 10px;
+    opacity: 0;
+  }
+  30% {
+    bottom: 0;
+    opacity: 1;
+  }
+  70% {
+    bottom: 0;
+    opacity: 1;
+  }
+  100% {
+    bottom: -10px;
+    opacity: 0;
+  }
+}
+
+@keyframes dot {
+  0% {
+    bottom: 10px;
+    opacity: 0;
+  }
+  30% {
+    bottom: 0;
+    opacity: 1;
+  }
+  70% {
+    bottom: 0;
+    opacity: 1;
+  }
+  100% {
+    bottom: -10px;
+    opacity: 0;
+  }
+}

@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import { reducer1 } from './reducer1';
+import { user } from './User';
+import { news } from './News';
+import { errors } from "./Errors";
 
 export const rootReducer = combineReducers({
-    test: reducer1
+    user: user,
+    news: news,
+    errors: errors,
 })
