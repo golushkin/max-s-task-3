@@ -15,15 +15,19 @@ export function getUser() {
         const Google_Auth = window.gapi.auth2.getAuthInstance();
         Google_Auth.signIn()
             .then((user) => {
-                localStorage.setItem('user',JSON.stringify({name: user.getBasicProfile().getName(),google_token: user.Zi.id_token}));
+                const my_user = {
+                    id: user.getBasicProfile().getId(),
+                    name: user.getBasicProfile().getName(),
+                    img: user.getBasicProfile().getImageUrl(),
+                    google_token: user.getAuthResponse().id_token,
+                }
+
+                localStorage.setItem('user',JSON.stringify(my_user));
                 dispatch({
                     type:USER_REQ_SUCCES,
-                    payload: {
-                        name: user.getBasicProfile().getName(),
-                        google_token: user.Zi.id_token
-                    }
+                    payload: my_user
                 });
-                dispatch(getServerToken(user.Zi.id_token));
+                dispatch(getServerToken(my_user.google_token));
             })
             .catch((err) => dispatch({type: USER_REQ_FAIL, payload:"Ошибка: авторизация не удалась"}));
     }

@@ -24,8 +24,10 @@ class App extends React.Component{
         const { name, getUser, signOut,
             getAllNews, news,isNewsLoad,
             delNews, error } = this.props;
-        if (error){
-            this.notify(error);
+        const arr_errors = Object.values(error).filter(value => value.length>0)
+
+        if (arr_errors.length>0){
+            this.notify(arr_errors[0]);
         }
         return(
             <div className={'wrapper'}>

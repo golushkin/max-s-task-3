@@ -13,7 +13,7 @@ const initialState = {
 export function news(state = initialState,action) {
     switch (action.type) {
         case NEWS_REQ_FEEDS:
-            return {...state, isLoad_news: true };
+            return {...state, isLoad_news: true};
         case NEWS_REQ_FEEDS_SUCCES:
             return {...state, isLoad_news:false, feeds: action.payload };
         case NEWS_REQ_DEL_SUCCES:

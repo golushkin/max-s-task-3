@@ -15,14 +15,10 @@ export function user(state = initialState, action) {
             return {...state, name: "", error:false, token: "",google_token: ""};
         case USER_REQ_SUCCES:
             return {...state, name: action.payload.name, img: action.payload.img, google_token: action.payload.google_token};
-        case USER_REQ_FAIL:
-            return {...state, error: true };
         case USER_REQ_TOKEN_SUCCESS:
             return {...state, token: action.payload };
         case USER_REQ_TOKEN:
             return {...state };
-        case USER_REQ_TOKEN_FAIL:
-            return {...state, error: true };
 
         default:
             return state;
