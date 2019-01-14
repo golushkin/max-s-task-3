@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import {Article} from "../Other/Article";
 import {delNews} from "../../actions/News";
-import {Default_btn} from "../Other/Buttons";
+import {Button} from "antd";
 
 class News_read extends React.Component{
     constructor(props){
@@ -13,18 +13,18 @@ class News_read extends React.Component{
         this.state={
             redirect_to_edit: false,
         }
-        this.onEdit = this.onEdit.bind(this);
-        this.onDel = this.onDel.bind(this);
     }
 
-    onEdit(){
+    onEdit = () =>{
         this.setState({redirect_to_edit:true});
     }
 
-    onDel(){
-        const { delNews, id } = this.props;
-        delNews(id);
-        this.setState();
+    onDel = () =>{
+        const { delNews } = this.props;
+        if (window.confirm("Удалить ?")){
+            delNews();
+            this.setState();
+        }
     }
 
     render(){
@@ -51,8 +51,8 @@ class News_read extends React.Component{
                         name !== ""
                         ?   (
                             <div className="buttons">
-                                <Default_btn btnClick={this.onEdit} name={'edit'} text={'Редактировать'} />
-                                <Default_btn btnClick={this.onDel} name={'del'} text={'Удалить'} />
+                                <Button onClick={this.onEdit} htmlType={'button'}>Редактировать</Button>
+                                <Button onClick={this.onDel} htmlType={'button'}>Удалить</Button>
                             </div>
                         )
                         :""
@@ -70,10 +70,10 @@ const mapStateToProps = state =>{
     }
 };
 
-const mapStateToDipatch = dispatch =>{
+const mapStateToDispatch = dispatch =>{
     return{
         delNews: (id)=>dispatch(delNews(id)),
     }
 };
 
-export default connect(mapStateToProps,mapStateToDipatch)(News_read)
+export default connect(mapStateToProps,mapStateToDispatch)(News_read)

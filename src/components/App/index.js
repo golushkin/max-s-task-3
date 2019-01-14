@@ -10,14 +10,23 @@ import News_edit from "../News_edit";
 import Not_Found from "../PageNotFount";
 import {getUser, signOut} from "../../actions/User";
 import { getAllNews, delNews } from '../../actions/News';
-import Modal_Err from "../Other/Modal_Err";
-
+import { ToastContainer, toast,  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'antd/dist/antd.css';
 
 class App extends React.Component{
+
+    notify = (err) =>{
+        toast.error(err);
+    }
+
     render(){
         const { name, getUser, signOut,
             getAllNews, news,isNewsLoad,
             delNews, error } = this.props;
+        if (error){
+            this.notify(error);
+        }
         return(
             <div className={'wrapper'}>
                 <Header name={name} getUser={getUser} signOut={signOut}/>
@@ -33,7 +42,17 @@ class App extends React.Component{
                                                                                 name={name} />} />
                     <Route component={Not_Found}/>
                 </Switch>
-                <Modal_Err error={error} />
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnVisibilityChange
+                    draggable
+                    pauseOnHover
+                />
                 <Footer />
             </div>
         )
@@ -58,13 +77,13 @@ const mapStateToProps = state =>{
     }
 };
 
-const mapDipatchToProps = dispatch =>{
+const mapDsipatchToProps = dispatch =>{
     return {
         getUser: () => dispatch(getUser()),
         signOut:()=> dispatch(signOut()),
         getAllNews:()=>dispatch(getAllNews()),
-        delNews: id=>dispatch(delNews(id)),
+        delNews: ()=>dispatch(delNews()),
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDipatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDsipatchToProps)(App));

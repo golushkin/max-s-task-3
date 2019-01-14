@@ -15,7 +15,7 @@ export function Article(props){
                             ?
                             <div className="edit">
                                 <Link to={PATH+`/${info._id}/edit`}><i className="fal fa-pencil-alt"></i></Link>
-                                <i onClick={()=>{delNews(info._id)}} className="fal fa-times"></i>
+                                <i onClick={()=>window.confirm("Удалить ?")?delNews():""} className="fal fa-times"/>
                             </div>
                             :""
                     }

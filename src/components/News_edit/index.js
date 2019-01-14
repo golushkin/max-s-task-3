@@ -3,7 +3,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
-import { Default_btn } from "../Other/Buttons";
+import { Button } from "antd";
 import { saveFeed } from '../../actions/News';
 
 class News_edit extends React.Component{
@@ -47,8 +47,8 @@ class News_edit extends React.Component{
                                   defaultValue={this.state.feed.content}/>
                     </div>
                     <div className="buttons">
-                        <Default_btn btnClick={()=>saveFeed(id, this.state.feed)} name={'save'} text={'Сохранить'} />
-                        <Default_btn btnClick={this.onCancel} name={'cancel'} text={'Отменить'} />
+                        <Button onClick={saveFeed} htmlType={'button'}>Сохранить</Button>
+                        <Button onClick={this.onCancel} htmlType={'button'}>Отменить</Button>
                     </div>
                 </article>
             </div>
@@ -72,7 +72,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
     return{
-        saveFeed: (id,feed)=>dispatch(saveFeed(id,feed)),
+        saveFeed: id=>dispatch(saveFeed(id)),
     }
 }
 

@@ -27,7 +27,7 @@
   & .buttons{
     width: 80%;
     margin: 50px auto;
-    & .btn{
+    & button{
       margin: 20px 10px;
       &:first-child{
         margin-left: 0;

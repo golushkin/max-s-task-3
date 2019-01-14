@@ -37,7 +37,7 @@ export function delNews(id) {
             }
         })
             .then(
-                r=>dispatch({type:NEWS_REQ_DEL_SUCCES,payload:id}),
+                ()=>dispatch({type:NEWS_REQ_DEL_SUCCES}),
                 ()=>dispatch({type:NEWS_REQ_DEL_FAIL, payload: "Ошибка: удаление не удалось"})
             )
     }
@@ -57,7 +57,7 @@ export function saveFeed(id,feed) {
             data: feed
         })
             .then(
-                ()=>dispatch({type:NEWS_REQ_SAVE_SUCCES, payload:{id,feed}}),
+                ()=>dispatch({type:NEWS_REQ_SAVE_SUCCES}),
                 ()=>dispatch({type:NEWS_REQ_SAVE_FAIL, payload: "Ошибка: изменение удалось"})
             )
     }

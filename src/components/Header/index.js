@@ -2,7 +2,7 @@ import "./index.css";
 import React from 'react';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
-import {Default_btn} from "../Other/Buttons";
+import { Button } from 'antd';
 
 export default class Header extends React.Component{
     render(){
@@ -15,9 +15,10 @@ export default class Header extends React.Component{
                 <div className="auth">
                     {
                         name === ""
-                        ? <Default_btn btnClick={ getUser } text={'Войти'} name={'sign-in'} />
-                        : <Default_btn btnClick={ signOut } text={'Выйти'} name={'sign-out'} />
+                            ?  <Button onClick={getUser} htmlType={'button'}>Войти</Button>
+                            : <Button onClick={signOut} htmlType={'button'}>Выйти</Button>
                     }
+
                 </div>
             </header>
         )
