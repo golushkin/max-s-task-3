@@ -23,7 +23,7 @@ class App extends React.Component{
     render(){
         const { name, getUser, signOut,
             getAllNews, news,isNewsLoad,
-            delNews, error } = this.props;
+            delNews, error, img } = this.props;
         const arr_errors = Object.values(error).filter(value => value.length>0)
 
         if (arr_errors.length>0){
@@ -31,7 +31,7 @@ class App extends React.Component{
         }
         return(
             <div className={'wrapper'}>
-                <Header name={name} getUser={getUser} signOut={signOut}/>
+                <Header img={img} name={name} getUser={getUser} signOut={signOut}/>
                 <Switch>
                     <Route exact path={'/news'} render={()=> <News getAllNews={getAllNews}
                                                                    delNews={delNews}
@@ -72,6 +72,7 @@ class App extends React.Component{
 
 const mapStateToProps = state =>{
     return{
+        img: state.user.img,
         name: state.user.name,
         news: state.news.feeds,
         isNewsLoad: state.news.isLoad_news,

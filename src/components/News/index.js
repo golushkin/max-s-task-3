@@ -3,7 +3,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { Article } from "../Other/Article";
 import {Spinner} from "../Other/Spinner";
-
+import { Empty } from 'antd';
 
 export default class News extends React.Component{
 
@@ -13,6 +13,13 @@ export default class News extends React.Component{
             return(
                 <div className={'main news'}>
                     <Spinner />
+                </div>
+            )
+        }
+        if (news.length===0){
+            return (
+                <div className={'main news'}>
+                    <Empty description={<span>Новостей нет</span>} />
                 </div>
             )
         }

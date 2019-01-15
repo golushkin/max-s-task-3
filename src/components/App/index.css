@@ -6,7 +6,9 @@
   font-family: 'Merriweather', serif;
 }
 
-
+a{
+  text-decoration: none;
+}
 .wrapper{
   width: 55%;
   margin: 0 auto;

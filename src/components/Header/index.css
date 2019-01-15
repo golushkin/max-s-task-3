@@ -2,8 +2,18 @@ header{
   margin-top: 50px;
   display: flex !important;
   justify-content: space-between;
-  align-items: center;
   font-size: 18px;
+  & .user-block{
+    & .user-avatar{
+      display: flex;
+      & p{
+        margin-left: 10px;
+      }
+    }
+  }
+  & button{
+    width: 100%;
+  }
   @media screen and (max-width: 651px) {
     &{
       justify-content: space-around;

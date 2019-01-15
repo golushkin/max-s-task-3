@@ -1,11 +1,12 @@
 import {Link} from "react-router-dom";
 import React from "react";
 import propTypes from 'prop-types';
-
+import { Icon, Popconfirm, message } from 'antd';
 const PATH = "/news";
 
 export function Article(props){
         const { info, name, delNews } = props;
+
         return(
             <article>
                 <div className="title">
@@ -14,8 +15,16 @@ export function Article(props){
                         name === info.creator.displayName
                             ?
                             <div className="edit">
-                                <Link to={PATH+`/${info._id}/edit`}><i className="fal fa-pencil-alt"></i></Link>
-                                <i onClick={()=>window.confirm("Удалить ?")?delNews():""} className="fal fa-times"/>
+                                <Link to={PATH+`/${info._id}/edit`}><Icon type="edit" /></Link>
+                                <Popconfirm title={"Вы действительно хотите это удалить?"}
+                                            okText="Да" cancelText="Нет"
+                                            onConfirm={()=>{
+                                                delNews(info._id)
+                                                message.success("Удалено")
+                                            }}
+                                           >
+                                    <Icon type="delete"/>
+                                </Popconfirm>
                             </div>
                             :""
                     }

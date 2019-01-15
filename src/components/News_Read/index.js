@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import {Article} from "../Other/Article";
 import {delNews} from "../../actions/News";
-import {Button} from "antd";
+import {Button, Popconfirm, message, Icon} from "antd";
 
 class News_read extends React.Component{
     constructor(props){
@@ -19,11 +19,11 @@ class News_read extends React.Component{
         this.setState({redirect_to_edit:true});
     }
 
-    onDel = () =>{
+    onDel = (id) =>{
         const { delNews } = this.props;
         if (window.confirm("Удалить ?")){
-            delNews();
-            this.setState();
+            delNews(id);
+            this.setState({redirect: true});
         }
     }
 
@@ -46,13 +46,21 @@ class News_read extends React.Component{
         }
         return(
             <div className={'main news-read'}>
-               <Article name={name} delNews={delNews} info={info}/>
+               <Article name={name} delNews={this.onDel} info={info}/>
                     {
                         name !== ""
                         ?   (
                             <div className="buttons">
                                 <Button onClick={this.onEdit} htmlType={'button'}>Редактировать</Button>
-                                <Button onClick={this.onDel} htmlType={'button'}>Удалить</Button>
+                                <Popconfirm title={"Вы действительно хотите это удалить?"}
+                                            okText="Да" cancelText="Нет"
+                                            onConfirm={()=>{
+                                                this.onDel(id)
+                                                message.success("Удалено")
+                                            }}
+                                >
+                                    <Button htmlType={'button'}>Удалить</Button>
+                                </Popconfirm>
                             </div>
                         )
                         :""

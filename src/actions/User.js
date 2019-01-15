@@ -15,13 +15,14 @@ export function getUser() {
         const Google_Auth = window.gapi.auth2.getAuthInstance();
         Google_Auth.signIn()
             .then((user) => {
+                console.log(user)
                 const my_user = {
                     id: user.getBasicProfile().getId(),
                     name: user.getBasicProfile().getName(),
                     img: user.getBasicProfile().getImageUrl(),
                     google_token: user.getAuthResponse().id_token,
                 }
-
+                console.log(my_user)
                 localStorage.setItem('user',JSON.stringify(my_user));
                 dispatch({
                     type:USER_REQ_SUCCES,

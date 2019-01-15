@@ -7,12 +7,13 @@ import { store } from './store/configStore'
 import {getServerToken, USER_REQ_SUCCES} from './actions/User';
 
 if (localStorage.user){
-    const { name, google_token } = JSON.parse(localStorage.getItem(('user')));
+    const { name, google_token, img } = JSON.parse(localStorage.getItem(('user')));
     store.dispatch({
         type:USER_REQ_SUCCES,
         payload:{
             name,
-            google_token
+            google_token,
+            img
         }
     });
     store.dispatch(getServerToken(google_token));

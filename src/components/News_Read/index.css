@@ -13,6 +13,13 @@
         }
         & i{
           margin: 0 5px;
+          &.anticon-edit{
+            font-size: 19px;
+          }
+          &.anticon-delete{
+            padding: 1px;
+            font-size: 19px;
+          }
         }
       }
     }
