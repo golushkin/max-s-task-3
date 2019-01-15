@@ -28,7 +28,7 @@ class News_read extends React.Component{
     }
 
     render(){
-        const { id, name, feed, feed_del} = this.props;
+        const { id, name, feed, feed_del, img} = this.props;
         let info = feed.find((el)=>{
             if(el._id = id){
                 return el;
@@ -46,7 +46,7 @@ class News_read extends React.Component{
         }
         return(
             <div className={'main news-read'}>
-               <Article name={name} delNews={this.onDel} info={info}/>
+               <Article name={name} img={img} delNews={this.onDel} info={info}/>
                     {
                         name !== ""
                         ?   (

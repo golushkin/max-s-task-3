@@ -23,17 +23,20 @@ export default class Header extends React.Component{
 
 function UserBlock(props){
     const { getUser, signOut, name, img } = props;
+    if (name !== ""){
+        return(
+            <div className={'user-block'}>
+                <div className="user-avatar">
+                    <Avatar src={img} size={30} />
+                    <p>{name}</p>
+                </div>
+                <Button onClick={signOut} htmlType={'button'}>Выйти</Button>
+            </div>
+        )
+    }
     return(
         <div className={'user-block'}>
-            <div className="user-avatar">
-                <Avatar src={img} size={35} />
-                <p>{name}</p>
-            </div>
-            {
-                name === ""
-                    ? <Button onClick={getUser} htmlType={'button'}>Войти</Button>
-                    : <Button onClick={signOut} htmlType={'button'}>Выйти</Button>
-            }
+            <Button onClick={getUser} htmlType={'button'}>Войти</Button>
         </div>
     )
 }

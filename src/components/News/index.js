@@ -1,14 +1,15 @@
 import "./index.css";
 import React from 'react';
-import propTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Article } from "../Other/Article";
 import {Spinner} from "../Other/Spinner";
 import { Empty } from 'antd';
+import {delNews, getAllNews} from "../../actions/News";
 
-export default class News extends React.Component{
+class News extends React.Component{
 
     render(){
-        const { isNewsLoad, name, news, delNews } = this.props;
+        const { isNewsLoad, name, news, delNews,img } = this.props;
         if (isNewsLoad){
             return(
                 <div className={'main news'}>
@@ -27,6 +28,7 @@ export default class News extends React.Component{
             <div className={'main news'}>
                 {news.map((val,i)=>{
                     return <Article key={i}
+                                    img={img}
                                     delNews={delNews}
                                     name={name}
                                     info={val} />
@@ -40,11 +42,20 @@ export default class News extends React.Component{
     }
 }
 
-
-News.propTypes = {
-    name: propTypes.string.isRequired,
-    news: propTypes.array.isRequired,
-    getAllNews: propTypes.func.isRequired,
-    isNewsLoad: propTypes.bool.isRequired,
-    delNews: propTypes.func.isRequired,
+const mapStateToProps = state =>{
+    return{
+        img: state.user.img,
+        name: state.user.name,
+        news: state.news.feeds,
+        isNewsLoad: state.news.isLoad_news,
+    }
 }
+
+const mapDispatchToProps = dispatch =>{
+    return{
+        getAllNews:()=>dispatch(getAllNews()),
+        delNews: ()=>dispatch(delNews()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(News)

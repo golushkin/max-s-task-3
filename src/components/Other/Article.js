@@ -1,12 +1,12 @@
 import {Link} from "react-router-dom";
 import React from "react";
 import propTypes from 'prop-types';
-import { Icon, Popconfirm, message } from 'antd';
+import { Icon, Popconfirm, message, Avatar } from 'antd';
+import {configDate} from "./helpers";
 const PATH = "/news";
 
 export function Article(props){
-        const { info, name, delNews } = props;
-
+        const { info, name, delNews, img } = props;
         return(
             <article>
                 <div className="title">
@@ -29,9 +29,15 @@ export function Article(props){
                             :""
                     }
                 </div>
-                <div className="info">{info.creator.displayName}</div>
+                <div className="info">
+                    <Avatar size={"small"} src={img}/>
+                    <p>{info.creator.displayName}</p>
+                </div>
                 <div className="text">
                     {info.content}
+                </div>
+                <div className="date">
+                    {configDate(info.createDate)}
                 </div>
             </article>
         )
@@ -39,6 +45,7 @@ export function Article(props){
 }
 
 Article.propTypes = {
+    img: propTypes.string.isRequired,
     name: propTypes.string.isRequired,
     delNews: propTypes.func.isRequired,
     info: propTypes.object.isRequired,

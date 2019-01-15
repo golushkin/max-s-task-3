@@ -33,12 +33,10 @@ class App extends React.Component{
             <div className={'wrapper'}>
                 <Header img={img} name={name} getUser={getUser} signOut={signOut}/>
                 <Switch>
-                    <Route exact path={'/news'} render={()=> <News getAllNews={getAllNews}
-                                                                   delNews={delNews}
-                                                                   news={news}
-                                                                   isNewsLoad={isNewsLoad}
+                    <Route exact path={'/news'} render={()=> <News img={img}
                                                                    name={name} />} />
                     <Route exact path={'/news/:id'} render={(props)=> <News_read id={props.match.params.id}
+                                                                                 img={img}
                                                                                  name={name} />} />
                     <Route path={'/news/:id/edit'} render={(props)=> <News_edit id={props.match.params.id}
                                                                                 name={name} />} />
@@ -74,19 +72,15 @@ const mapStateToProps = state =>{
     return{
         img: state.user.img,
         name: state.user.name,
-        news: state.news.feeds,
-        isNewsLoad: state.news.isLoad_news,
         error: state.errors.error,
     }
 };
 
-const mapDsipatchToProps = dispatch =>{
+const mapDispatchToProps = dispatch =>{
     return {
         getUser: () => dispatch(getUser()),
         signOut:()=> dispatch(signOut()),
-        getAllNews:()=>dispatch(getAllNews()),
-        delNews: ()=>dispatch(delNews()),
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDsipatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

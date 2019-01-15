@@ -29,7 +29,20 @@
       }
     }
     & .info{
-      margin: 7px 0;
+      display: flex;
+      margin-top: 5px;
+      & p{
+        margin-left: 10px;
+      }
+    }
+    & .date{
+      margin-top: 10px;
+      text-align: right;
+      font-size: 10px;
+      color: #6a6a6a;
+      &:hover{
+        color: #000;
+      }
     }
     & .text{
       line-height: 24px;
